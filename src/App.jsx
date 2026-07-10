@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProductForm from "./pages/admin/ProductForm";
+import Team from "./pages/Team";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -46,6 +47,7 @@ function App() {
         <Route path="/products/:slug" element={<ProductDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/team" element={<Team />} />
 
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route

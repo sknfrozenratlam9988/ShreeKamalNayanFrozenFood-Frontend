@@ -52,7 +52,7 @@ const Footer = () => {
             <li><Link to="/products?category=Frozen Vegetables">Frozen Vegetables</Link></li>
             <li><Link to="/products?category=Frozen Fruits">Frozen Fruits</Link></li>
             <li><Link to="/products?category=Frozen Mix">Frozen Mix</Link></li>
-            <li><Link to="/admin/login">Admin Login</Link></li>
+            {/* <li><Link to="/admin/login">Admin Login</Link></li> */}
           </ul>
         </div>
 
