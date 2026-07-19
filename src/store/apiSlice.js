@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "/api",
+  baseUrl:
+    import.meta.env.VITE_API_URL || "https://api.shreekamalnayanfrozenfood.com",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth?.adminInfo?.token;
     if (token) headers.set("Authorization", `Bearer ${token}`);
