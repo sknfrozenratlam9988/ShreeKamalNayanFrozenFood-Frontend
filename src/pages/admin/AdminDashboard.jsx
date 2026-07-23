@@ -7,6 +7,7 @@ import { useGetAdminProductsQuery, useDeleteProductMutation } from "../../store/
 import { logout } from "../../store/authSlice";
 import Loader from "../../components/Loader";
 import logo from "../../assets/logo.png";
+import { getImageUrl } from "../../utils/image";
 
 const AdminDashboard = () => {
   const { data: products, isLoading } = useGetAdminProductsQuery();
