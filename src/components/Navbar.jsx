@@ -11,7 +11,6 @@ const links = [
   { to: "/team", label: "Our Team" },
   { to: "/contact", label: "Contact" },
 ];
-
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
