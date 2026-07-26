@@ -23,50 +23,110 @@ const Contact = () => {
 
         <div style={{ display: "grid", gridTemplateColumns: "0.8fr 1.2fr", gap: 48 }} id="contact-grid">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            style={{ display: "flex", flexDirection: "column", gap: 20 }}
+  initial={{ opacity: 0, x: -20 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.5 }}
+  style={{ display: "flex", flexDirection: "column", gap: 20 }}
+>
+  {[
+    {
+      icon: FaMapMarkerAlt,
+      title: "Visit Us",
+      text: "Survey No.143/2/2 Village Bhaisa Dabar Sailana Ratlam 457001",
+      link: "https://www.google.com/maps/search/?api=1&query=Survey+No.143/2/2+Village+Bhaisa+Dabar+Sailana+Ratlam+457001",
+      external: true,
+    },
+    {
+      icon: FaPhoneAlt,
+      title: "Call Us",
+      text: "+91 9329847964",
+      link: "tel:+919329847964",
+      external: false,
+    },
+    {
+      icon: FaEnvelope,
+      title: "Email Us",
+      text: "shreekamalnayanfrozen@gmail.com",
+      link: "mailto:shreekamalnayanfrozen@gmail.com",
+      external: false,
+    },
+  ].map((c) => (
+    <a
+      key={c.title}
+      href={c.link}
+      target={c.external ? "_blank" : undefined}
+      rel={c.external ? "noopener noreferrer" : undefined}
+      style={{
+        textDecoration: "none",
+        color: "inherit",
+      }}
+    >
+      <div
+        style={{
+          background: "var(--white)",
+          borderRadius: "var(--radius-md)",
+          padding: 24,
+          display: "flex",
+          gap: 16,
+          alignItems: "flex-start",
+          boxShadow: "var(--shadow-sm)",
+          cursor: "pointer",
+          transition: "all 0.3s ease",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-4px)";
+          e.currentTarget.style.boxShadow =
+            "0 12px 28px rgba(0,0,0,0.12)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.boxShadow = "var(--shadow-sm)";
+        }}
+      >
+        <div
+          style={{
+            width: 46,
+            height: 46,
+            borderRadius: "50%",
+            background: "var(--frost)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+          }}
+        >
+          <c.icon color="var(--teal)" size={18} />
+        </div>
+
+        <div>
+          <h4
+            style={{
+              fontSize: 16,
+              margin: 0,
+              color: "var(--teal)",
+              fontWeight: 700,
+            }}
           >
-            {[
-              { icon: FaMapMarkerAlt, title: "Visit Us", text: "Ratlam, Madhya Pradesh, India" },
-              { icon: FaPhoneAlt, title: "Call Us", text: "+91 9617420222" },
-              { icon: FaEnvelope, title: "Email Us", text: "shreekamalnayanfrozen@gmail.com" },
-            ].map((c) => (
-              <div
-                key={c.title}
-                style={{
-                  background: "var(--white)",
-                  borderRadius: "var(--radius-md)",
-                  padding: 24,
-                  display: "flex",
-                  gap: 16,
-                  alignItems: "flex-start",
-                  boxShadow: "var(--shadow-sm)",
-                }}
-              >
-                <div
-                  style={{
-                    width: 46,
-                    height: 46,
-                    borderRadius: "50%",
-                    background: "var(--frost)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  <c.icon color="var(--teal)" size={18} />
-                </div>
-                <div>
-                  <h4 style={{ fontSize: 15 }}>{c.title}</h4>
-                  <p style={{ fontSize: 14, color: "var(--ink-soft)", marginTop: 4 }}>{c.text}</p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+            {c.title}
+          </h4>
+
+          <p
+            style={{
+              fontSize: 14,
+              color: "var(--ink-soft)",
+              marginTop: 6,
+              marginBottom: 0,
+              lineHeight: 1.6,
+            }}
+          >
+            {c.text}
+          </p>
+        </div>
+      </div>
+    </a>
+  ))}
+</motion.div>
 
           <motion.form
             onSubmit={handleSubmit}

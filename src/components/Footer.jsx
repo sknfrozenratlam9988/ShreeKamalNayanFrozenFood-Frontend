@@ -58,11 +58,60 @@ const Footer = () => {
 
         <div>
           <h4 style={{ color: "var(--gold-soft)", fontSize: 16, marginBottom: 18 }}>Get in Touch</h4>
-          <ul style={{ display: "flex", flexDirection: "column", gap: 14, fontSize: 14.5 }}>
-            <li style={{ display: "flex", gap: 10, alignItems: "flex-start" }}><FaMapMarkerAlt style={{ marginTop: 3, color: "var(--gold-soft)" }} />Ratlam , Madhya Pradesh, India</li>
-            <li style={{ display: "flex", gap: 10, alignItems: "center" }}><FaPhoneAlt style={{ color: "var(--gold-soft)" }} />+91 9617420222</li>
-            <li style={{ display: "flex", gap: 10, alignItems: "center" }}><FaEnvelope style={{ color: "var(--gold-soft)" }} />shreekamalnayanfrozen@gmail.com</li>
-          </ul>
+          <ul
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    gap: 14,
+    fontSize: 14.5,
+  }}
+>
+  {/* Address */}
+  <li style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+    <FaMapMarkerAlt
+      style={{ marginTop: 3, color: "var(--gold-soft)" }}
+    />
+    <a
+      href="https://www.google.com/maps/search/?api=1&query=Survey+No.143/2/2+Village+Bhaisa+Dabar+Sailana+Ratlam+457001"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        color: "inherit",
+        textDecoration: "none",
+      }}
+    >
+      Survey No.143/2/2 Village Bhaisa Dabar, Sailana, Ratlam 457001
+    </a>
+  </li>
+
+  {/* Phone */}
+  <li style={{ display: "flex", gap: 10, alignItems: "center" }}>
+    <FaPhoneAlt style={{ color: "var(--gold-soft)" }} />
+    <a
+      href="tel:+919329847964"
+      style={{
+        color: "inherit",
+        textDecoration: "none",
+      }}
+    >
+      +91 9329847964
+    </a>
+  </li>
+
+  {/* Email */}
+  <li style={{ display: "flex", gap: 10, alignItems: "center" }}>
+    <FaEnvelope style={{ color: "var(--gold-soft)" }} />
+    <a
+      href="mailto:shreekamalnayanfrozen@gmail.com"
+      style={{
+        color: "inherit",
+        textDecoration: "none",
+      }}
+    >
+      shreekamalnayanfrozen@gmail.com
+    </a>
+  </li>
+</ul>
         </div>
       </div>
 
