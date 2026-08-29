@@ -61,7 +61,7 @@ const handleLogout = async () => {
       <div className="container" style={{ marginTop: 40 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 28, flexWrap: "wrap", gap: 14 }}>
           <div>
-            <h2 style={{ fontSize: 24 }}>Manage Products</h2>
+            <h2 style={{ fontSize: 24 }}>Manage Product</h2>
             <p style={{ color: "var(--ink-soft)", fontSize: 14, marginTop: 4 }}>
               {products?.length || 0} product{products?.length === 1 ? "" : "s"} in catalogue
             </p>
