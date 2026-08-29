@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPlus, FaEdit, FaTrash, FaSignOutAlt, FaBoxOpen } from "react-icons/fa";
-import { useGetAdminProductsQuery, useDeleteProductMutation } from "../../store/apiSlice";
+import { useGetAdminProductsQuery, useDeleteProductMutation, useLogoutMutation  } from "../../store/apiSlice";
 import { logout } from "../../store/authSlice";
 import Loader from "../../components/Loader";
 import logo from "../../assets/logo.png";
@@ -12,6 +12,7 @@ import { getImageUrl } from "../../utils/image";
 const AdminDashboard = () => {
   const { data: products, isLoading } = useGetAdminProductsQuery();
   const [deleteProduct] = useDeleteProductMutation();
+  const [logoutApi] = useLogoutMutation();
   const [confirmId, setConfirmId] = useState(null);
   const [toast, setToast] = useState("");
   const { adminInfo } = useSelector((state) => state.auth);
@@ -29,10 +30,16 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleLogout = () => {
+const handleLogout = async () => {
+  try {
+    await logoutApi().unwrap();
+  } catch (err) {
+    console.error("Logout API error:", err);
+  } finally {
     dispatch(logout());
     navigate("/admin/login");
-  };
+  }
+};
 
   return (
     <div style={{ minHeight: "calc(100vh - var(--header-h))", background: "var(--frost)", paddingBottom: 60 }}>

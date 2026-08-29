@@ -3,11 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseQuery = fetchBaseQuery({
   baseUrl:
     import.meta.env.VITE_API_URL || "https://api.shreekamalnayanfrozenfood.com",
-  prepareHeaders: (headers, { getState }) => {
-    const token = getState().auth?.adminInfo?.token;
-    if (token) headers.set("Authorization", `Bearer ${token}`);
-    return headers;
-  },
+  credentials: "include",
 });
 
 export const apiSlice = createApi({
@@ -72,6 +68,12 @@ export const apiSlice = createApi({
         body: credentials,
       }),
     }),
+    logout: builder.mutation({
+      query: () => ({
+        url: `/auth/logout`,
+        method: "POST",
+      }),
+    }),
   }),
 });
 
@@ -85,4 +87,5 @@ export const {
   useDeleteProductMutation,
   useUploadImagesMutation,
   useLoginMutation,
+  useLogoutMutation,
 } = apiSlice;

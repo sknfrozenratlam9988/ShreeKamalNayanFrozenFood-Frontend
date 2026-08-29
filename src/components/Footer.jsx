@@ -12,28 +12,53 @@ const Footer = () => {
             Bringing farm-fresh vegetables and fruits to your kitchen, flash-frozen at peak
             ripeness — pure, natural, and ready whenever you are.
           </p>
-          <div style={{ display: "flex", gap: 12, marginTop: 20 }}>
-            {[FaFacebookF, FaInstagram, FaWhatsapp].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                style={{
-                  width: 38,
-                  height: 38,
-                  borderRadius: "50%",
-                  background: "rgba(255,255,255,0.1)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  transition: "background 0.25s ease, transform 0.25s ease",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--gold)")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.1)")}
-              >
-                <Icon size={15} />
-              </a>
-            ))}
-          </div>
+         <div style={{ display: "flex", gap: 12, marginTop: 20 }}>
+  {[
+    {
+      icon: FaFacebookF,
+      link: "https://www.facebook.com/your-page",
+    },
+    {
+      icon: FaInstagram,
+      link: "https://www.instagram.com/your_username",
+    },
+    {
+      icon: FaWhatsapp,
+      link: "https://wa.me/919329847964",
+      // or use:
+      // link: "https://api.whatsapp.com/send?phone=919329847964"
+    },
+  ].map((item, i) => (
+    <a
+      key={i}
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        width: 38,
+        height: 38,
+        borderRadius: "50%",
+        background: "rgba(255,255,255,0.1)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        transition: "background 0.25s ease, transform 0.25s ease",
+        color: "inherit",
+        textDecoration: "none",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = "var(--gold)";
+        e.currentTarget.style.transform = "translateY(-3px)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+        e.currentTarget.style.transform = "translateY(0)";
+      }}
+    >
+      <item.icon size={15} />
+    </a>
+  ))}
+</div>
         </div>
 
         <div>
