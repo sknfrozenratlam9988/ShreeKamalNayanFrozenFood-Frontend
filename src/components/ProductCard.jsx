@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaStar, FaSnowflake } from "react-icons/fa";
 import { getImageUrl } from "../utils/image";
 
 const ProductCard = ({ product, index = 0 }) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -23,21 +26,36 @@ const ProductCard = ({ product, index = 0 }) => {
           border: "1px solid rgba(11,79,86,0.06)",
           position: "relative",
           transition: "transform 0.35s ease, box-shadow 0.35s ease",
-          height: "100%", // card equal height
+          height: "100%", 
         }}
       >
         <div style={{ position: "relative", overflow: "hidden", aspectRatio: "4/3.1" }}>
-          <img
-            src={getImageUrl(product.thumbnail)}
-            alt={product.name}
-            className="pc-img"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              transition: "transform 0.6s ease",
-            }}
-          />
+          {!imgLoaded && (
+            <div
+              className="pc-skeleton"
+              style={{
+                position: "absolute",
+                inset: 0,
+              }}
+            />
+          )}
+
+        <img
+  src={getImageUrl(product.thumbnail)}
+  alt={product.name}
+  loading="lazy"
+  className="pc-img"
+  onLoad={() => setImgLoaded(true)}
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    transition: "transform 0.6s ease, opacity 0.4s ease",
+    opacity: imgLoaded ? 1 : 0,
+    visibility: imgLoaded ? "visible" : "hidden",
+    position: imgLoaded ? "static" : "absolute",
+  }}
+/>
 
           <div
             style={{
@@ -113,7 +131,6 @@ const ProductCard = ({ product, index = 0 }) => {
 
           <h3 style={{ fontSize: 19, margin: "6px 0 8px" }}>{product.name}</h3>
 
-          {/* Description with 4 line clamp */}
           <p
             className="product-desc"
             style={{
@@ -121,7 +138,7 @@ const ProductCard = ({ product, index = 0 }) => {
               color: "var(--ink-soft)",
               margin: 0,
               lineHeight: 1.6,
-              minHeight: "90px", // keeps card height consistent
+              minHeight: "90px", 
             }}
           >
             {product.shortDescription}
@@ -185,6 +202,22 @@ const ProductCard = ({ product, index = 0 }) => {
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
+        }
+
+        .pc-skeleton {
+          background: linear-gradient(
+            90deg,
+            rgba(11, 79, 86, 0.08) 25%,
+            rgba(11, 79, 86, 0.15) 50%,
+            rgba(11, 79, 86, 0.08) 75%
+          );
+          background-size: 200% 100%;
+          animation: pc-shimmer 1.4s ease-in-out infinite;
+        }
+
+        @keyframes pc-shimmer {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
         }
       `}</style>
     </motion.div>
