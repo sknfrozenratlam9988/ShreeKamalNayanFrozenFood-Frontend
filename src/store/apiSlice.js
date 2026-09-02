@@ -9,7 +9,7 @@ const baseQuery = fetchBaseQuery({
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery,
-  tagTypes: ["Product"],
+  tagTypes: ["Product", "Order"],
   endpoints: (builder) => ({
     // ------- PUBLIC -------
     getProducts: builder.query({
@@ -74,6 +74,34 @@ export const apiSlice = createApi({
         method: "POST",
       }),
     }),
+
+        // ------- ORDERS -------
+    placeOrder: builder.mutation({
+      query: (orderData) => ({
+        url: `/orders`,
+        method: "POST",
+        body: orderData,
+      }),
+    }),
+    getAdminOrders: builder.query({
+      query: () => `/orders/admin/all`,
+      providesTags: [{ type: "Order", id: "LIST" }],
+    }),
+    getPendingOrdersCount: builder.query({
+      query: () => `/orders/admin/pending-count`,
+      providesTags: [{ type: "Order", id: "COUNT" }],
+    }),
+    updateOrderStatus: builder.mutation({
+      query: ({ id, status }) => ({
+        url: `/orders/${id}/status`,
+        method: "PATCH",
+        body: { status },
+      }),
+      invalidatesTags: [
+        { type: "Order", id: "LIST" },
+        { type: "Order", id: "COUNT" },
+      ],
+    }),
   }),
 });
 
@@ -88,4 +116,8 @@ export const {
   useUploadImagesMutation,
   useLoginMutation,
   useLogoutMutation,
+  usePlaceOrderMutation,
+  useGetAdminOrdersQuery,
+  useGetPendingOrdersCountQuery,
+  useUpdateOrderStatusMutation,
 } = apiSlice;

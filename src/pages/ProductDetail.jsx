@@ -6,6 +6,9 @@ import { useGetProductBySlugQuery, useGetProductsQuery } from "../store/apiSlice
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
 import { getImageUrl } from "../utils/image";
+import { useDispatch } from "react-redux";
+import { FaCartPlus } from "react-icons/fa";
+import { addToCart } from "../store/cartSlice";
 
 const ProductDetail = () => {
   const { slug } = useParams();
@@ -16,12 +19,21 @@ const ProductDetail = () => {
   );
   const [activeImg, setActiveImg] = useState(0);
   const [qty, setQty] = useState(1);
-
+  const dispatch = useDispatch();
+  const [added, setAdded] = useState(false);
   useEffect(() => {
     setActiveImg(0);
     setQty(1);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [slug]);
+
+   const handleAddToCart = () => {
+    for (let i = 0; i < qty; i++) {
+      dispatch(addToCart(product));
+    }
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1500);
+  };
 
   if (isLoading) return <Loader label="Fetching product details..." />;
   if (isError || !product)
@@ -137,7 +149,7 @@ const ProductDetail = () => {
               <span style={{ color: "var(--ink-soft)" }}>/ {product.unit}</span>
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 26, flexWrap: "wrap" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 26, flexWrap: "wrap" }}>
               <div
                 style={{
                   display: "flex",
@@ -152,15 +164,24 @@ const ProductDetail = () => {
                 <button onClick={() => setQty((q) => q + 1)} style={qtyBtnStyle}>+</button>
               </div>
 
+              <button
+                onClick={handleAddToCart}
+                className="btn btn-primary"
+                style={{ display: "flex", alignItems: "center", gap: 6, padding: "12px 18px", fontSize: 14 }}
+              >
+                <FaCartPlus size={14} /> {added ? "Added!" : "Add to Cart"}
+              </button>
               <a
+              
                 href={`https://wa.me/919617420222?text=${encodeURIComponent(
                   `Hi! I would like to order ${qty} x ${product.name} (${product.unit}) from Shree Kamal Nayan Frozen Food LLP.`
                 )}`}
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-primary"
+                style={{ display: "flex", alignItems: "center", gap: 6, padding: "12px 16px", fontSize: 14 }}
               >
-                <FaWhatsapp /> Order on WhatsApp
+                <FaWhatsapp size={26} />
               </a>
             </div>
 

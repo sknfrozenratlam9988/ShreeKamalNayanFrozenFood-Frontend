@@ -1,13 +1,26 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaSnowflake, FaLeaf, FaShippingFast, FaAward } from "react-icons/fa";
+import {
+  FaSnowflake,
+  FaLeaf,
+  FaShippingFast,
+  FaAward,
+  FaStar,
+  FaQuoteLeft,
+} from "react-icons/fa";
 import { useGetFeaturedProductsQuery } from "../store/apiSlice";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
 import logo from "../assets/logo.png";
 
 
-import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
+import {
+  Autoplay,
+  Pagination,
+  Navigation,
+  EffectFade,
+  EffectCoverflow,
+} from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -21,6 +34,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import vegetableImg from "../assets/Mix-veg.png";
 import fruitImg from "../assets/Mango.png";
 import readyImg from "../assets/ready-to-eat.png";
+import vegetableImg1 from "../assets/mix_boul.png";
+import fruitImg1 from "../assets/cut_boul.png";
+import readyImg1 from "../assets/green_boul.png";
+import vegetableImg2 from "../assets/Frozen_Samosa.png";
+import fruitImg2 from "../assets/Frozen_Kachori.png";
+import readyImg2 from "../assets/Cheese_Corn_Momos.png";
+import vegetableImg3 from "../assets/Frozen_Mangoes.png";
+import fruitImg3 from "../assets/Black_Berry.png";
+import readyImg3 from "../assets/Custard_Apple.png";
+import readyImg4 from "../assets/Strawberry.png";
 const fadeUp = {
 
   
@@ -87,6 +110,120 @@ const slides = [
     link: "/products?category=Ready To Eat",
     image: readyImg,
     color: "#f57c00",
+  },
+];
+
+const showcaseProducts = [
+  {
+    image: vegetableImg1,
+    cutout: vegetableImg1,
+    title: "Frozen Mix Vegetables",
+    features: ["Green Peas • Green beans", "Carrots cube • Sweetcorn", "Cauliflower"],
+  },
+  {
+    image: fruitImg1,
+    cutout: fruitImg1,
+    title: "Frozen Cut Beans",
+    features: ["No added preservatives", "Natural pulp", "Acidity & brix maintained"],
+  },
+  {
+    image: readyImg1,
+    cutout: readyImg1,
+    title: "Frozen green peas",
+    features: ["Heat & serve", "No added preservatives", "Restaurant-style taste"],
+  },
+  {
+    image: vegetableImg2,
+    cutout: vegetableImg2,
+    title: "Frozen Samosa",
+    features: ["Hygienically packed", "No chemicals", "No added preservatives"],
+  },
+  {
+    image: fruitImg2,
+    cutout: fruitImg2,
+    title: "Frozen Kachori",
+    features: ["No added preservatives", "Natural pulp", "Acidity & brix maintained"],
+  },
+  {
+    image: readyImg2,
+    cutout: readyImg2 ,
+    title: "Frozen Cheese Corn Momos",
+    features: ["Hygienically packed", "Pesticide free", "No artificial colour"],
+  },
+  {
+    image: vegetableImg3,
+    cutout: vegetableImg3,
+    title: "Frozen Mangoes",
+    features: ["Hygienically packed", "No chemicals", "No added preservatives"],
+  },
+  {
+    image: fruitImg3,
+    cutout: fruitImg3,
+    title: "Frozen Blackberry",
+    features: ["No added preservatives", "Natural pulp", "Acidity & brix maintained"],
+  },
+  {
+    image: readyImg3,
+    cutout: readyImg3,
+    title: "Frozen Custard Apple",
+    features: ["Hygienically packed", "Pesticide free", "No artificial colour"],
+  },
+  {
+    image: readyImg4,
+    cutout: readyImg4,
+    title: "Frozen Strawberry",
+    features: ["Hygienically packed", "Pesticide free", "No artificial colour"],
+  },
+];
+
+  const clientReviews = [
+  {
+    name: "Rohit Sharma",
+    role: "Home Chef",
+    initials: "RS",
+    rating: 5,
+    review:
+      "The frozen vegetables are really fresh and convenient. The taste stays close to freshly picked produce.",
+  },
+  {
+    name: "Priya Patel",
+    role: "Regular Customer",
+    initials: "PP",
+    rating: 5,
+    review:
+      "I loved the strawberries and custard apples. Great quality, clean packaging and very easy to use.",
+  },
+  {
+    name: "Amit Verma",
+    role: "Restaurant Owner",
+    initials: "AV",
+    rating: 5,
+    review:
+      "Consistent quality every time. The products save a lot of preparation time without compromising taste.",
+  },
+  {
+    name: "Neha Jain",
+    role: "Home Cook",
+    initials: "NJ",
+    rating: 5,
+    review:
+      "The ready-to-cook range is perfect for busy days. Everything tastes fresh and cooks beautifully.",
+  },
+  {
+    name: "Vikas Gupta",
+    role: "Food Enthusiast",
+    initials: "VG",
+    rating: 5,
+    review:
+      "Excellent frozen range with natural taste. The fruits are especially good for smoothies and desserts.",
+  },
+  {
+    name: "Kavita Mehta",
+    role: "Regular Customer",
+    initials: "KM",
+    rating: 5,
+    review:
+      "Very happy with the quality and hygiene. These products have become a regular part of my kitchen.",
   },
 ];
 
@@ -302,6 +439,53 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ================= PRODUCT SHOWCASE (image-overlay cards) ================= */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <div className="feather-divider"><span className="line" /><FaLeaf color="var(--peacock)" /><span className="line" /></div>
+            <span className="eyebrow" style={{ justifyContent: "center", display: "flex" }}>Our range</span>
+            <h2>Popular frozen picks</h2>
+            <p>A closer look at the products our customers reach for most.</p>
+          </div>
+
+          <div className="showcase-grid" id="showcase-grid">
+            {showcaseProducts.map((p, i) => (
+              <motion.div
+                className="showcase-card"
+                key={`${p.title}-${i}`}
+                custom={i}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                variants={fadeUp}
+              >
+                <img className="showcase-card-bg" src={p.image} alt={p.title} loading="lazy" />
+                <div className="showcase-card-overlay" />
+                {p.cutout && (
+                  <img
+                    className="showcase-card-cutout"
+                    src={p.cutout}
+                    alt=""
+                    loading="lazy"
+                    aria-hidden="true"
+                  />
+                )}
+                <div className="showcase-card-content">
+                  <h4>{p.title}</h4>
+                  <span className="showcase-features-label">Features:</span>
+                  <ul>
+                    {p.features.map((f, j) => (
+                      <li key={j}>{f}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ================= FEATURED PRODUCTS ================= */}
       <section className="section" style={{ background: "linear-gradient(180deg, transparent, rgba(28,140,147,0.05))" }}>
         <div className="container">
@@ -327,6 +511,160 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+{/* ================= CLIENT REVIEWS ================= */}
+<section className="section client-reviews-section">
+  <div className="container">
+
+    <div className="section-head">
+
+      <div className="feather-divider">
+        <span className="line" />
+        <FaLeaf color="var(--peacock)" />
+        <span className="line" />
+      </div>
+
+      <span
+        className="eyebrow"
+        style={{
+          justifyContent: "center",
+          display: "flex",
+        }}
+      >
+        What our customers say
+      </span>
+
+      <h2>Loved by our customers</h2>
+
+      <p>
+        Real experiences from people who enjoy the freshness,
+        quality and convenience of our frozen range.
+      </p>
+
+    </div>
+
+
+    <div className="reviews-slider-wrap">
+
+      <Swiper
+        modules={[
+          Autoplay,
+          Pagination,
+          Navigation,
+          EffectCoverflow,
+        ]}
+        effect="coverflow"
+        centeredSlides={true}
+        loop={true}
+        grabCursor={true}
+        speed={750}
+
+        slidesPerView={1}
+        spaceBetween={24}
+
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+
+        pagination={{
+          clickable: true,
+        }}
+
+        navigation
+
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 180,
+          modifier: 1.15,
+          slideShadows: true,
+        }}
+
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+          },
+        }}
+
+        className="client-reviews-swiper"
+      >
+
+        {clientReviews.map((review, i) => (
+
+          <SwiperSlide key={`${review.name}-${i}`}>
+
+            <article className="client-review-card">
+
+              {/* TOP */}
+              <div
+                className={`review-card-top review-color-${(i % 6) + 1}`}
+              >
+
+                <div className="review-avatar">
+                  {review.initials}
+                </div>
+
+                <FaQuoteLeft className="review-quote-icon" />
+
+              </div>
+
+
+              {/* BODY */}
+              <div className="review-card-body">
+
+                <div
+                  className="review-stars"
+                  aria-label={`${review.rating} out of 5 stars`}
+                >
+
+                  {Array.from({
+                    length: review.rating,
+                  }).map((_, starIndex) => (
+                    <FaStar key={starIndex} />
+                  ))}
+
+                </div>
+
+
+                <h3>
+                  {review.name}
+                </h3>
+
+
+                <span className="review-role">
+                  {review.role}
+                </span>
+
+
+                <p>
+                  "{review.review}"
+                </p>
+
+              </div>
+
+
+              <div className="review-card-corner" />
+
+            </article>
+
+          </SwiperSlide>
+
+        ))}
+
+      </Swiper>
+
+    </div>
+
+  </div>
+</section>
 
       {/* ================= WHY US ================= */}
       <section className="section-tight" style={{ background: "var(--teal-deep)", color: "var(--frost)" }}>
@@ -368,12 +706,563 @@ const Home = () => {
 
       <style>{`
         .cat-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+
+        .showcase-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+        }
+
+        .showcase-card {
+          position: relative;
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          aspect-ratio: 16 / 9;
+          box-shadow: var(--shadow-sm);
+          cursor: pointer;
+          transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .showcase-card:hover {
+          transform: translateY(-6px);
+          box-shadow: var(--shadow-lg, 0 18px 34px rgba(0,0,0,0.22));
+        }
+
+        .showcase-card-bg {
+          position: absolute;
+          inset: -8px;
+          width: calc(100% + 16px);
+          height: calc(100% + 16px);
+          object-fit: cover;
+
+          filter: blur(3px);
+
+          transform: scale(0.9);
+
+          transition: transform 0.6s ease, filter 0.4s ease;
+
+          pointer-events: none;
+        }
+
+        .showcase-card-cutout {
+          position: absolute;
+          right: -6%;
+          bottom: -8%;
+          width: 62%;
+          height: auto;
+          max-height: 92%;
+          object-fit: contain;
+          filter: drop-shadow(0 14px 22px rgba(0,0,0,0.35));
+          transition: transform 0.6s ease;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .showcase-card:hover .showcase-card-bg,
+        .showcase-card:hover .showcase-card-cutout {
+          transform: scale(1.08);
+        }
+
+        .showcase-card-overlay {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background: linear-gradient(
+            90deg,
+            rgba(209, 196, 76, 0.54) 0%,
+            rgba(36, 36, 36, 0.38) 32%,
+            rgba(5, 13, 14, 0.1) 62%,
+            rgba(6, 25, 27, 0) 80%
+          );
+          transition: background 0.35s ease;
+        }
+
+        .showcase-card-content {
+          position: relative;
+          z-index: 1;
+          height: 100%;
+          padding: 22px 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          max-width: 68%;
+          color: #020202;
+        }
+
+        .showcase-card-content h4 {
+        color: #490229b7;
+          margin: 0 0 8px;
+          font-size: 25px;
+          line-height: 1.5;
+          font-weight: 700;
+        }
+
+        .showcase-features-label {
+          font-size: 18px;
+          font-weight: 700;
+          opacity: 0.85;
+          margin-bottom: 4px;
+          display: block;
+        }
+
+        .showcase-card-content ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          font-size: 15px;
+          font-weight: 500;
+          line-height: 1.6;
+          opacity: 0.92;
+        }
+
+        .showcase-card-content ul li::before {
+          content: "- ";
+        }
+
+        /* ================= CLIENT REVIEWS ================= */
+
+.client-reviews-section {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(28, 140, 147, 0.08),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(212, 169, 60, 0.09),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      var(--cream) 0%,
+      #f8f5ec 100%
+    );
+}
+
+
+.reviews-slider-wrap {
+  position: relative;
+  padding: 18px 42px 58px;
+  perspective: 1200px;
+}
+
+
+.client-reviews-swiper {
+  width: 100%;
+  overflow: visible;
+  padding: 28px 0 54px;
+}
+
+
+.client-reviews-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+  justify-content: center;
+
+  transition:
+    transform 0.45s ease,
+    opacity 0.45s ease;
+}
+
+
+.client-reviews-swiper
+.swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.72;
+}
+
+
+/* CARD */
+
+.client-review-card {
+  position: relative;
+
+  width: 100%;
+  min-height: 390px;
+
+  overflow: hidden;
+
+  background: var(--white);
+
+  border-radius: 26px 26px 20px 20px;
+
+  border: 1px solid rgba(11, 79, 86, 0.08);
+
+  box-shadow:
+    0 18px 45px rgba(11, 79, 86, 0.13);
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+
+.swiper-slide-active
+.client-review-card {
+  box-shadow:
+    0 25px 60px rgba(11, 79, 86, 0.20);
+}
+
+
+.client-review-card:hover {
+  transform:
+    translateY(-8px)
+    rotateX(1deg);
+
+  box-shadow:
+    0 30px 65px rgba(11, 79, 86, 0.22);
+}
+
+
+/* TOP AREA */
+
+.review-card-top {
+  position: relative;
+
+  height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 26px 26px 0 0;
+}
+
+
+.review-card-top::before,
+.review-card-top::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: rgba(
+    255,
+    255,
+    255,
+    0.13
+  );
+}
+
+
+.review-card-top::before {
+  width: 190px;
+  height: 190px;
+
+  top: -110px;
+  left: -30px;
+}
+
+
+.review-card-top::after {
+  width: 140px;
+  height: 140px;
+
+  right: -45px;
+  bottom: -80px;
+}
+
+
+/* DIFFERENT CARD COLORS */
+
+.review-color-1 {
+  background: linear-gradient(
+    135deg,
+    #1598c0,
+    #087f9c
+  );
+}
+
+.review-color-2 {
+  background: linear-gradient(
+    135deg,
+    #f2ad35,
+    #e78c19
+  );
+}
+
+.review-color-3 {
+  background: linear-gradient(
+    135deg,
+    #a64c9d,
+    #8b3284
+  );
+}
+
+.review-color-4 {
+  background: linear-gradient(
+    135deg,
+    #1c9b72,
+    #08795a
+  );
+}
+
+.review-color-5 {
+  background: linear-gradient(
+    135deg,
+    #e66b4b,
+    #c94c32
+  );
+}
+
+.review-color-6 {
+  background: linear-gradient(
+    135deg,
+    #5269bd,
+    #354ca1
+  );
+}
+
+
+/* CUSTOMER AVATAR */
+
+.review-avatar {
+  position: relative;
+  z-index: 2;
+
+  width: 108px;
+  height: 108px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(
+    255,
+    255,
+    255,
+    0.96
+  );
+
+  border: 7px solid rgba(
+    255,
+    255,
+    255,
+    0.35
+  );
+
+  box-shadow:
+    0 12px 28px rgba(
+      0,
+      0,
+      0,
+      0.16
+    );
+
+  color: var(--teal-deep);
+
+  font-family: var(--font-display);
+
+  font-size: 28px;
+
+  font-weight: 900;
+}
+
+
+/* QUOTE ICON */
+
+.review-quote-icon {
+  position: absolute;
+
+  right: 22px;
+  top: 20px;
+
+  z-index: 2;
+
+  color: rgba(
+    255,
+    255,
+    255,
+    0.55
+  );
+
+  font-size: 32px;
+}
+
+
+/* CARD CONTENT */
+
+.review-card-body {
+  position: relative;
+
+  padding: 25px 24px 30px;
+
+  text-align: center;
+}
+
+
+/* STARS */
+
+.review-stars {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  margin-bottom: 12px;
+
+  color: var(--gold);
+
+  font-size: 16px;
+}
+
+
+/* NAME */
+
+.review-card-body h3 {
+  margin: 0;
+
+  color: var(--teal-deep);
+
+  font-family: var(--font-display);
+
+  font-size: 21px;
+
+  font-weight: 800;
+}
+
+
+/* ROLE */
+
+.review-role {
+  display: block;
+
+  margin-top: 3px;
+
+  color: var(--ink-soft);
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+/* REVIEW TEXT */
+
+.review-card-body p {
+  margin: 17px auto 0;
+
+  max-width: 330px;
+
+  color: var(--ink-soft);
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  font-style: italic;
+}
+
+
+/* CORNER */
+
+.review-card-corner {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 42px;
+  height: 42px;
+
+  background: var(--teal);
+
+  clip-path: polygon(
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+
+  opacity: 0.9;
+}
+
+
+/* SWIPER ARROWS */
+
+.client-reviews-swiper
+.swiper-button-next,
+
+.client-reviews-swiper
+.swiper-button-prev {
+  display: none;
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: var(--white);
+
+  box-shadow:
+    0 8px 22px rgba(
+      0,
+      0,
+      0,
+      0.12
+    );
+
+  color: var(--teal-deep);
+}
+
+
+.client-reviews-swiper
+.swiper-button-next::after,
+
+.client-reviews-swiper
+.swiper-button-prev::after {
+  font-size: 16px;
+
+  font-weight: 900;
+}
+
+
+/* PAGINATION */
+
+.client-reviews-swiper
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+
+  opacity: 0.35;
+
+  background: var(--teal);
+
+  transition:
+    width 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+.client-reviews-swiper
+.swiper-pagination-bullet-active {
+  width: 24px;
+
+  border-radius: 10px;
+
+  opacity: 1;
+}
+
         @media (max-width: 960px) {
           #hero-grid { grid-template-columns: 1fr !important; }
           #hero-stats { justify-content: center; }
           #cat-grid { grid-template-columns: 1fr 1fr !important; }
           #featured-grid { grid-template-columns: 1fr 1fr !important; }
           #why-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 720px) {
+          .showcase-grid { grid-template-columns: 1fr !important; }
+          .showcase-card { aspect-ratio: 4 / 3; }
+          .showcase-card-content { max-width: 78%; }
         }
         @media (max-width: 560px) {
           #cat-grid { grid-template-columns: 1fr !important; }

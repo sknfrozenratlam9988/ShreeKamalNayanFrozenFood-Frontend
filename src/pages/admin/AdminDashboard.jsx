@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPlus, FaEdit, FaTrash, FaSignOutAlt, FaBoxOpen } from "react-icons/fa";
-import { useGetAdminProductsQuery, useDeleteProductMutation, useLogoutMutation  } from "../../store/apiSlice";
+import { FaPlus, FaEdit, FaTrash, FaSignOutAlt, FaBoxOpen, FaClipboardList } from "react-icons/fa";
+import { useGetAdminProductsQuery, useDeleteProductMutation, useLogoutMutation , useGetPendingOrdersCountQuery  } from "../../store/apiSlice";
 import { logout } from "../../store/authSlice";
 import Loader from "../../components/Loader";
 import logo from "../../assets/logo.png";
@@ -11,6 +11,10 @@ import { getImageUrl } from "../../utils/image";
 
 const AdminDashboard = () => {
   const { data: products, isLoading } = useGetAdminProductsQuery();
+  const { data: pendingData } = useGetPendingOrdersCountQuery(undefined, {
+  pollingInterval: 30000,
+});
+const pendingCount = pendingData?.count || 0;
   const [deleteProduct] = useDeleteProductMutation();
   const [logoutApi] = useLogoutMutation();
   const [confirmId, setConfirmId] = useState(null);
@@ -52,9 +56,41 @@ const handleLogout = async () => {
               <p style={{ color: "var(--teal-light)", fontSize: 12.5, margin: 0 }}>Welcome, {adminInfo?.name}</p>
             </div>
           </div>
-          <button onClick={handleLogout} className="btn btn-outline" style={{ borderColor: "var(--gold-soft)", color: "var(--gold-soft)" }}>
-            <FaSignOutAlt /> Logout
-          </button>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <Link
+              to="/admin/orders"
+              className="btn btn-outline"
+              style={{ borderColor: "var(--gold-soft)", color: "var(--gold-soft)", position: "relative" }}
+            >
+              <FaClipboardList /> Orders
+              {pendingCount > 0 && (
+                <span
+                  style={{
+                    position: "absolute",
+                    top: -8,
+                    right: -8,
+                    background: "var(--red)",
+                    color: "var(--white)",
+                    fontSize: 11,
+                    fontWeight: 800,
+                    borderRadius: 999,
+                    minWidth: 18,
+                    height: 18,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "0 4px",
+                  }}
+                >
+                  {pendingCount}
+                </span>
+              )}
+            </Link>
+
+            <button onClick={handleLogout} className="btn btn-outline" style={{ borderColor: "var(--gold-soft)", color: "var(--gold-soft)" }}>
+              <FaSignOutAlt /> Logout
+            </button>
+          </div>
         </div>
       </div>
 
