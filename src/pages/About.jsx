@@ -221,18 +221,6 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="vision-mission-card-top">
-                <div className="vision-mission-card-number">01</div>
-
-                <div className="vision-mission-card-icon">
-                  <span></span>
-                </div>
-              </div>
-
-              <div className="vision-mission-card-label">
-                Our Vision
-              </div>
-
               <h3>Our Vision</h3>
 
               <div className="vision-mission-card-line"></div>
@@ -287,17 +275,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="vision-mission-card-top">
-                <div className="vision-mission-card-number">02</div>
-
-                <div className="vision-mission-card-icon">
-                  <span></span>
-                </div>
-              </div>
-
-              <div className="vision-mission-card-label">
-                Our Mission
-              </div>
+           
 
               <h3>Our Mission</h3>
 

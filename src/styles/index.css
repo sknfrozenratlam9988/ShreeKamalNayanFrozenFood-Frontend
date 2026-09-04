@@ -1390,30 +1390,6 @@ footer a:hover {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  #cat-grid > div > a,
-  .product-card,
-  .showcase-card,
-  .review-card,
-  .client-review-card,
-  .btn,
-  header nav a,
-  header nav button,
-  footer a {
-    transform: none !important;
-
-
-  }
-
   .cart-page {
   position: relative;
   min-height: calc(100vh - var(--header-h));
@@ -4822,5 +4798,4 @@ section.section:has(#vision-mission-grid) .section-head p {
   #vision-mission-grid > div {
     transition: none;
   }
-}
 }

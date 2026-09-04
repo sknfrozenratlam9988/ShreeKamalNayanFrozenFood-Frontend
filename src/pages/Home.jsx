@@ -11,7 +11,7 @@ import {
 import { useGetFeaturedProductsQuery } from "../store/apiSlice";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 
 import {
@@ -31,19 +31,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 
 // Replace these with your own images
-import vegetableImg from "../assets/Mix-veg.png";
-import fruitImg from "../assets/Mango.png";
-import readyImg from "../assets/ready-to-eat.png";
-import vegetableImg1 from "../assets/mix_boul.png";
-import fruitImg1 from "../assets/cut_boul.png";
-import readyImg1 from "../assets/green_boul.png";
-import vegetableImg2 from "../assets/Frozen_Samosa.png";
-import fruitImg2 from "../assets/Frozen_Kachori.png";
-import readyImg2 from "../assets/Cheese_Corn_Momos.png";
-import vegetableImg3 from "../assets/Frozen_Mangoes.png";
-import fruitImg3 from "../assets/Black_Berry.png";
-import readyImg3 from "../assets/Custard_Apple.png";
-import readyImg4 from "../assets/Strawberry.png";
+import vegetableImg from "../assets/Mix-veg.webp";
+import fruitImg from "../assets/Mango.webp";
+import readyImg from "../assets/ready-to-eat.webp";
+import vegetableImg1 from "../assets/mix_boul.webp";
+import fruitImg1 from "../assets/cut_boul.webp";
+import readyImg1 from "../assets/green_boul.webp";
+import vegetableImg2 from "../assets/Frozen_Samosa.webp";
+import fruitImg2 from "../assets/Frozen_Kachori.webp";
+import readyImg2 from "../assets/Cheese_Corn_Momos.webp";
+import vegetableImg3 from "../assets/Frozen_Mangoes.webp";
+import fruitImg3 from "../assets/Black_Berry.webp";
+import readyImg3 from "../assets/Custard_Apple.webp";
+import readyImg4 from "../assets/Strawberry.webp";
 const fadeUp = {
 
   
