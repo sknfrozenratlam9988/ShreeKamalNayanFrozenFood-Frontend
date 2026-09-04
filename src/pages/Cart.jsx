@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { FaTrash, FaPlus, FaMinus, FaShoppingBag } from "react-icons/fa";
+import { FaTrash, FaPlus, FaMinus, FaShoppingBag, FaArrowRight } from "react-icons/fa";
 import {
   increaseQuantity,
   decreaseQuantity,
@@ -17,134 +17,164 @@ const CartPage = () => {
 
   if (items.length === 0) {
     return (
-      <div className="container" style={{ padding: "80px 0", textAlign: "center" }}>
-        <FaShoppingBag size={48} color="var(--teal)" />
-        <h2 style={{ marginTop: 20, fontSize: 24 }}>Your cart is empty</h2>
-        <p style={{ color: "var(--ink-soft)", marginTop: 8 }}>
-          Add some products to get started.
-        </p>
-        <Link to="/products" className="btn btn-primary" style={{ marginTop: 24, display: "inline-flex" }}>
-          Browse Products
-        </Link>
+      <div className="cart-page cart-empty-page">
+        <div className="cart-bg-orb cart-bg-orb-one"></div>
+        <div className="cart-bg-orb cart-bg-orb-two"></div>
+        <div className="cart-grid"></div>
+
+        <div className="cart-empty-container">
+          <div className="cart-empty-icon">
+            <FaShoppingBag />
+          </div>
+
+          <span className="cart-eyebrow">YOUR SHOPPING BAG</span>
+
+          <h2>Your cart is empty</h2>
+
+          <p>
+            Add some products to get started.
+          </p>
+
+          <Link to="/products" className="cart-shop-btn">
+            <span>Browse Products</span>
+            <FaArrowRight />
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="container" style={{ padding: "50px 0 80px" }}>
-      <h2 style={{ fontSize: 26, marginBottom: 30 }}>Your Cart</h2>
+    <div className="cart-page">
+      <div className="cart-bg-orb cart-bg-orb-one"></div>
+      <div className="cart-bg-orb cart-bg-orb-two"></div>
+      <div className="cart-bg-orb cart-bg-orb-three"></div>
+      <div className="cart-grid"></div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-        {items.map((item) => (
-          <div
-            key={item.productId}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-              background: "var(--white)",
-              borderRadius: "var(--radius-md)",
-              padding: 16,
-              boxShadow: "var(--shadow-sm)",
-              flexWrap: "wrap",
-            }}
-          >
-            <img
-              src={getImageUrl(item.thumbnail)}
-              alt={item.name}
-              style={{ width: 72, height: 72, borderRadius: 10, objectFit: "cover" }}
-            />
+      <div className="cart-container">
+        <div className="cart-header">
+          <div>
+            <span className="cart-eyebrow">PREMIUM COLLECTION</span>
+            <h2>Your Cart</h2>
+            <p>Review your selected products before checkout.</p>
+          </div>
 
-            <div style={{ flex: 1, minWidth: 140 }}>
-              <h4 style={{ fontSize: 16 }}>{item.name}</h4>
-              <p style={{ fontSize: 13, color: "var(--ink-soft)", marginTop: 4 }}>
-                ₹{item.price} / {item.unit}
-              </p>
+          <div className="cart-count">
+            <FaShoppingBag />
+            <span>{items.length} {items.length === 1 ? "Item" : "Items"}</span>
+          </div>
+        </div>
+
+        <div className="cart-content">
+          <div className="cart-items">
+            {items.map((item) => (
+              <div className="cart-item-card" key={item.productId}>
+                <div className="cart-product-image-wrap">
+                  <div className="cart-product-glow"></div>
+
+                  <img
+                    src={getImageUrl(item.thumbnail)}
+                    alt={item.name}
+                    className="cart-product-image"
+                  />
+                </div>
+
+                <div className="cart-product-info">
+                  <span className="cart-product-label">FROZEN FRESH</span>
+
+                  <h4>{item.name}</h4>
+
+                  <p>
+                    ₹{item.price} / {item.unit}
+                  </p>
+                </div>
+
+                <div className="cart-quantity-area">
+                  <span className="cart-control-label">QUANTITY</span>
+
+                  <div className="cart-quantity-control">
+                    <button
+                      onClick={() => dispatch(decreaseQuantity(item.productId))}
+                      aria-label="Decrease quantity"
+                    >
+                      <FaMinus size={10} />
+                    </button>
+
+                    <span>{item.quantity}</span>
+
+                    <button
+                      onClick={() => dispatch(increaseQuantity(item.productId))}
+                      aria-label="Increase quantity"
+                    >
+                      <FaPlus size={10} />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="cart-item-total">
+                  <span>SUBTOTAL</span>
+                  <strong>
+                    ₹{(item.price * item.quantity).toFixed(2)}
+                  </strong>
+                </div>
+
+                <button
+                  className="cart-remove-btn"
+                  onClick={() => dispatch(removeFromCart(item.productId))}
+                  aria-label="Remove item"
+                >
+                  <FaTrash />
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <div className="cart-summary">
+            <div className="cart-summary-top">
+              <span className="cart-eyebrow">ORDER SUMMARY</span>
+              <h3>Cart Total</h3>
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <button
-                onClick={() => dispatch(decreaseQuantity(item.productId))}
-                style={qtyBtnStyle}
-                aria-label="Decrease quantity"
-              >
-                <FaMinus size={11} />
-              </button>
-              <span style={{ minWidth: 20, textAlign: "center", fontWeight: 700 }}>
-                {item.quantity}
+            <div className="cart-summary-line">
+              <span>Products</span>
+              <span>{items.length}</span>
+            </div>
+
+            <div className="cart-summary-line">
+              <span>Quantity</span>
+              <span>
+                {items.reduce((sum, item) => sum + item.quantity, 0)}
               </span>
-              <button
-                onClick={() => dispatch(increaseQuantity(item.productId))}
-                style={qtyBtnStyle}
-                aria-label="Increase quantity"
-              >
-                <FaPlus size={11} />
-              </button>
             </div>
 
-            <div style={{ minWidth: 80, textAlign: "right", fontWeight: 800, color: "var(--red)" }}>
-              ₹{(item.price * item.quantity).toFixed(2)}
+            <div className="cart-summary-divider"></div>
+
+            <div className="cart-total-row">
+              <div>
+                <span>Total Amount</span>
+                <small>Inclusive of selected products</small>
+              </div>
+
+              <strong>₹{total.toFixed(2)}</strong>
             </div>
 
             <button
-              onClick={() => dispatch(removeFromCart(item.productId))}
-              style={{
-                background: "none",
-                border: "none",
-                color: "var(--red)",
-                cursor: "pointer",
-                padding: 8,
-              }}
-              aria-label="Remove item"
+              onClick={() => navigate("/checkout")}
+              className="cart-checkout-btn"
             >
-              <FaTrash />
+              <span>Proceed to Checkout</span>
+              <FaArrowRight />
             </button>
-          </div>
-        ))}
-      </div>
 
-      <div
-        style={{
-          marginTop: 30,
-          background: "var(--white)",
-          borderRadius: "var(--radius-md)",
-          padding: 24,
-          boxShadow: "var(--shadow-sm)",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: 16,
-        }}
-      >
-        <div>
-          <p style={{ fontSize: 13, color: "var(--ink-soft)" }}>Total Amount</p>
-          <p style={{ fontSize: 26, fontWeight: 800, color: "var(--teal-deep)" }}>
-            ₹{total.toFixed(2)}
-          </p>
+            <div className="cart-secure-note">
+              <span className="cart-secure-dot"></span>
+              <span>Secure &amp; seamless checkout</span>
+            </div>
+          </div>
         </div>
-        <button
-          onClick={() => navigate("/checkout")}
-          className="btn btn-primary"
-        >
-          Proceed to Checkout
-        </button>
       </div>
     </div>
   );
-};
-
-const qtyBtnStyle = {
-  width: 28,
-  height: 28,
-  borderRadius: 8,
-  border: "1px solid rgba(11,79,86,0.18)",
-  background: "var(--frost)",
-  color: "var(--teal-deep)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  cursor: "pointer",
 };
 
 export default CartPage;

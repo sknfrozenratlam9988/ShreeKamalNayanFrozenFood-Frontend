@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
-import { FaSeedling, FaSnowflake, FaTruck, FaHandsHelping } from "react-icons/fa";
+import {
+  FaSeedling,
+  FaSnowflake,
+  FaTruck,
+  FaHandsHelping,
+} from "react-icons/fa";
 import logo from "../assets/logo.png";
 
 const values = [
@@ -28,7 +33,6 @@ const values = [
 const About = () => {
   return (
     <div>
-      {/* About Hero */}
       <section className="section" style={{ paddingBottom: 40 }}>
         <div
           className="container"
@@ -46,9 +50,16 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="eyebrow">Our story</span>
-            <h1 style={{ fontSize: "clamp(30px, 4vw, 44px)", marginTop: 14 }}>
+
+            <h1
+              style={{
+                fontSize: "clamp(30px, 4vw, 44px)",
+                marginTop: 14,
+              }}
+            >
               From farmland to freezer, with care at every step
             </h1>
+
             <p
               style={{
                 marginTop: 20,
@@ -64,6 +75,7 @@ const About = () => {
               work and customer satisfaction, and with the blessings of all of
               you, we are setting up our own manufacturing plant.
             </p>
+
             <p
               style={{
                 marginTop: 16,
@@ -82,197 +94,253 @@ const About = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
-            style={{ display: "flex", justifyContent: "center" }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
             <img
               src={logo}
               alt="Shree Kamal Nayan Frozen Food LLP"
-              style={{ maxWidth: 340, width: "100%" }}
+              style={{
+                maxWidth: 340,
+                width: "100%",
+              }}
               className="float"
             />
           </motion.div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="section" style={{ background: "rgba(28,140,147,0.06)" }}>
-        <div className="container">
-          <div className="section-head">
-            <span
-              className="eyebrow"
-              style={{ justifyContent: "center", display: "flex" }}
-            >
-              What we stand for
-            </span>
-            <h2>Our values</h2>
-          </div>
+      <section className="about-values-section">
+        <div className="about-values-glow about-values-glow-one"></div>
+        <div className="about-values-glow about-values-glow-two"></div>
+        <div className="about-values-grid-bg"></div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 24,
-            }}
-            id="values-grid"
+        <div className="container about-values-container">
+          <motion.div
+            className="about-values-heading"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            {values.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                style={{
-                  background: "var(--white)",
-                  borderRadius: "var(--radius-md)",
-                  padding: 28,
-                  boxShadow: "var(--shadow-sm)",
-                  textAlign: "center",
-                }}
-              >
-                <div
-                  style={{
-                    width: 56,
-                    height: 56,
-                    borderRadius: "50%",
-                    background:
-                      "linear-gradient(135deg, var(--teal-light), var(--frost))",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    margin: "0 auto 16px",
+            <span className="about-values-eyebrow">
+              <span></span>
+              What we stand for
+              <span></span>
+            </span>
+
+            <h2>Our values</h2>
+
+            <div className="about-values-heading-line"></div>
+          </motion.div>
+
+          <div className="about-values-grid" id="values-grid">
+            {values.map((v, i) => {
+              const Icon = v.icon;
+
+              return (
+                <motion.div
+                  className="about-value-card"
+                  key={v.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.55,
+                    delay: i * 0.1,
                   }}
                 >
-                  <v.icon color="var(--teal-deep)" size={22} />
-                </div>
-                <h4 style={{ fontSize: 16 }}>{v.title}</h4>
-                <p
-                  style={{
-                    fontSize: 13.5,
-                    color: "var(--ink-soft)",
-                    marginTop: 10,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {v.text}
-                </p>
-              </motion.div>
-            ))}
+                  <div className="about-value-number">
+                    0{i + 1}
+                  </div>
+
+                  <div className="about-value-icon-wrap">
+                    <div className="about-value-icon-ring"></div>
+
+                    <div className="about-value-icon">
+                      <Icon />
+                    </div>
+                  </div>
+
+                  <div className="about-value-content">
+                    <span className="about-value-label">
+                      OUR PROMISE
+                    </span>
+
+                    <h4>{v.title}</h4>
+
+                    <p>{v.text}</p>
+                  </div>
+
+                  <div className="about-value-bottom">
+                    <span></span>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Vision & Mission Section */}
-      <section className="section">
-        <div className="container">
-          <div className="section-head">
-            <span
-              className="eyebrow"
-              style={{ justifyContent: "center", display: "flex" }}
-            >
+      <section className="vision-mission-section">
+        <div className="vision-mission-glow vision-mission-glow-one"></div>
+        <div className="vision-mission-glow vision-mission-glow-two"></div>
+        <div className="vision-mission-grid-bg"></div>
+
+        <div className="container vision-mission-container">
+          <motion.div
+            className="vision-mission-heading"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="vision-mission-eyebrow">
+              <span></span>
               Our purpose
+              <span></span>
             </span>
+
             <h2>Vision & Mission</h2>
+
             <p>
               Guided by quality, trust, and innovation, we work every day to
               bring nutritious frozen food products to homes and businesses.
             </p>
-          </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 28,
-              marginTop: 20,
-            }}
-            id="vision-mission-grid"
-          >
-            {/* Vision */}
+            <div className="vision-mission-heading-line"></div>
+          </motion.div>
+
+          <div className="vision-mission-grid" id="vision-mission-grid">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              className="vision-mission-card vision-card"
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              style={{
-                background: "var(--white)",
-                borderRadius: "var(--radius-lg)",
-                padding: 28,
-                boxShadow: "var(--shadow-md)",
-                borderLeft: "5px solid var(--teal)",
-              }}
+              transition={{ duration: 0.6 }}
             >
-              <h3 style={{ fontSize: 24, color: "var(--teal-deep)", marginBottom: 18 }}>
+              <div className="vision-mission-card-top">
+                <div className="vision-mission-card-number">01</div>
+
+                <div className="vision-mission-card-icon">
+                  <span></span>
+                </div>
+              </div>
+
+              <div className="vision-mission-card-label">
                 Our Vision
-              </h3>
-              <ul
-                style={{
-                  paddingLeft: 18,
-                  color: "var(--ink-soft)",
-                  lineHeight: 1.8,
-                  display: "grid",
-                  gap: 10,
-                }}
-              >
-                <li>Commitment to Quality – Providing the highest quality frozen food products.</li>
-                <li>Innovation & Taste – Offering innovative and delicious products to meet customer needs.</li>
-                <li>Food Safety Standards – Ensuring products reflect the highest standards of food safety.</li>
-                <li>Affordability – Bringing the best quality products at affordable prices.</li>
-                <li>Professional Team – Dedicated professionals focused on quality customer service.</li>
-                <li>Market Leadership – Aiming to become the leading supplier of frozen food products.</li>
-                <li>Continuous Improvement – Enhancing products and services for maximum customer satisfaction.</li>
+              </div>
+
+              <h3>Our Vision</h3>
+
+              <div className="vision-mission-card-line"></div>
+
+              <ul>
+                <li>
+                  Commitment to Quality – Providing the highest quality frozen
+                  food products.
+                </li>
+
+                <li>
+                  Innovation & Taste – Offering innovative and delicious
+                  products to meet customer needs.
+                </li>
+
+                <li>
+                  Food Safety Standards – Ensuring products reflect the
+                  highest standards of food safety.
+                </li>
+
+                <li>
+                  Affordability – Bringing the best quality products at
+                  affordable prices.
+                </li>
+
+                <li>
+                  Professional Team – Dedicated professionals focused on
+                  quality customer service.
+                </li>
+
+                <li>
+                  Market Leadership – Aiming to become the leading supplier of
+                  frozen food products.
+                </li>
+
+                <li>
+                  Continuous Improvement – Enhancing products and services for
+                  maximum customer satisfaction.
+                </li>
               </ul>
+
+              <div className="vision-mission-card-footer">
+                <span></span>
+                <span>QUALITY • GROWTH • EXCELLENCE</span>
+              </div>
             </motion.div>
 
-            {/* Mission */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              className="vision-mission-card mission-card"
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              style={{
-                background: "var(--white)",
-                borderRadius: "var(--radius-lg)",
-                padding: 28,
-                boxShadow: "var(--shadow-md)",
-                borderLeft: "5px solid var(--teal)",
-              }}
+              transition={{ duration: 0.6 }}
             >
-              <h3 style={{ fontSize: 24, color: "var(--teal-deep)", marginBottom: 18 }}>
+              <div className="vision-mission-card-top">
+                <div className="vision-mission-card-number">02</div>
+
+                <div className="vision-mission-card-icon">
+                  <span></span>
+                </div>
+              </div>
+
+              <div className="vision-mission-card-label">
                 Our Mission
-              </h3>
-              <ul
-                style={{
-                  paddingLeft: 18,
-                  color: "var(--ink-soft)",
-                  lineHeight: 1.8,
-                  display: "grid",
-                  gap: 10,
-                }}
-              >
-                <li>Authentic Taste – Bringing the genuine taste of Indian delicacies and other cuisines through convenient frozen foods.</li>
-                <li>Fresh Ingredients – Using only the freshest ingredients to ensure rich flavors.</li>
-                <li>Support to Local Farmers – Sourcing ingredients directly from local farmers for authenticity and sustainability.</li>
-                <li>Trust & Quality – Building trust with farmers, who act as stewards of quality standards.</li>
-                <li>Operate with transparency and ethics.</li>
-                <li>Invest in cutting-edge freezing and packaging technology.</li>
+              </div>
+
+              <h3>Our Mission</h3>
+
+              <div className="vision-mission-card-line"></div>
+
+              <ul>
+                <li>
+                  Authentic Taste – Bringing the genuine taste of Indian
+                  delicacies and other cuisines through convenient frozen foods.
+                </li>
+
+                <li>
+                  Fresh Ingredients – Using only the freshest ingredients to
+                  ensure rich flavors.
+                </li>
+
+                <li>
+                  Support to Local Farmers – Sourcing ingredients directly from
+                  local farmers for authenticity and sustainability.
+                </li>
+
+                <li>
+                  Trust & Quality – Building trust with farmers, who act as
+                  stewards of quality standards.
+                </li>
+
+                <li>
+                  Operate with transparency and ethics.
+                </li>
+
+                <li>
+                  Invest in cutting-edge freezing and packaging technology.
+                </li>
               </ul>
+
+              <div className="vision-mission-card-footer">
+                <span></span>
+                <span>TRUST • QUALITY • INNOVATION</span>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 900px) {
-          #about-hero { grid-template-columns: 1fr !important; }
-          #values-grid { grid-template-columns: 1fr 1fr !important; }
-          #vision-mission-grid { grid-template-columns: 1fr !important; }
-        }
-
-        @media (max-width: 560px) {
-          #values-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </div>
   );
 };

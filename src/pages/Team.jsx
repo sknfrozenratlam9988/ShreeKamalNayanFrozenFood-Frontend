@@ -58,7 +58,6 @@ const teamMembers = [
     email: "member2@example.com",
     bio: "As a Partner at Shree Kamalnayan Frozen Food LLP, Ritu Patidar infuses forward-thinking strategies into the company's long-term growth plans. She closely monitors modern business development initiatives and internal efficiencies to keep the company agile and competitive. Her collaborative spirit and focus on sustainable business practices play a vital role in taking the brand to new heights in the frozen food industry.",
   },
-  
 ];
 
 const highlights = [
@@ -86,126 +85,104 @@ const highlights = [
 
 const Team = () => {
   return (
-    <div>
-      {/* HERO */}
-      <section className="section" style={{ paddingBottom: 40 }}>
-        <div className="container">
-          <div className="section-head" style={{ maxWidth: 850, margin: "0 auto 24px" }}>
-            <span
-              className="eyebrow"
-              style={{ justifyContent: "center", display: "flex" }}
-            >
+    <div className="team-page">
+      <div className="team-bg-glow team-bg-glow-one" />
+      <div className="team-bg-glow team-bg-glow-two" />
+      <div className="team-bg-grid" />
+
+      <section className="team-hero">
+        <div className="container team-container">
+          <motion.div
+            className="team-hero-content"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="team-eyebrow">
+              <span className="team-eyebrow-line" />
               Meet the people behind the brand
+              <span className="team-eyebrow-line" />
             </span>
-            <h1 style={{ textAlign: "center" }}>Our Leadership & Team</h1>
-            <p style={{ textAlign: "center" }}>
+
+            <h1>
+              Our Leadership <span>&amp;</span> Team
+            </h1>
+
+            <p>
               At Shree Kamal Nayan Frozen Food LLP, our strength lies in the
               people who bring dedication, discipline, and care to every stage
               of the journey — from sourcing and production to packaging,
               quality control, and delivery.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* FOUNDER / CLIENT SECTION */}
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container">
+      <section className="team-leadership-section">
+        <div className="container team-container">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            className="team-founder-card"
+            initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            style={{
-              background: "var(--white)",
-              borderRadius: "var(--radius-lg)",
-              boxShadow: "var(--shadow-md)",
-              overflow: "hidden",
-              display: "grid",
-              gridTemplateColumns: "360px 1fr",
-              alignItems: "stretch",
-            }}
-            id="founder-card"
+            transition={{ duration: 0.7 }}
           >
-            {/* Left Image */}
-            <div style={{ minHeight: 420 }}>
+            <div className="team-founder-image-wrap">
               <img
                 src={founder.image}
                 alt={founder.name}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  display: "block",
-                }}
+                className="team-founder-image"
               />
+
+              <div className="team-founder-image-overlay" />
+
+              <div className="team-founder-image-badge">
+                <FaUserTie />
+                <span>Leadership</span>
+              </div>
             </div>
 
-            {/* Right Content */}
-            <div style={{ padding: "34px 34px 30px" }}>
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "rgba(28,140,147,0.08)",
-                  color: "var(--teal-deep)",
-                  padding: "8px 14px",
-                  borderRadius: 999,
-                  fontSize: 12.5,
-                  fontWeight: 800,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.06em",
-                }}
-              >
-                <FaUserTie /> Leadership Spotlight
-              </span>
+            <div className="team-founder-content">
+              <div className="team-card-label">
+                <span className="team-card-label-icon">
+                  <FaUserTie />
+                </span>
+                Leadership Spotlight
+              </div>
 
-              <h2 style={{ marginTop: 18, marginBottom: 8 }}>{founder.name}</h2>
-              <p
-                style={{
-                  color: "var(--peacock)",
-                  fontWeight: 700,
-                  fontSize: 15,
-                  marginBottom: 18,
-                }}
-              >
-                {founder.role}
-              </p>
+              <h2>{founder.name}</h2>
 
-              <p
-                style={{
-                  color: "var(--ink-soft)",
-                  lineHeight: 1.9,
-                  fontSize: 15.5,
-                  marginBottom: 22,
-                }}
-              >
-                {founder.bio}
-              </p>
+              <div className="team-founder-role">{founder.role}</div>
 
-              <div
-                style={{
-                  display: "grid",
-                  gap: 12,
-                }}
-              >
-                <div style={infoRow}>
-                  <FaPhoneAlt color="var(--teal)" />
+              <div className="team-gold-line" />
+
+              <p className="team-founder-bio">{founder.bio}</p>
+
+              <div className="team-founder-contact">
+                <div className="team-contact-item">
+                  <span className="team-contact-icon">
+                    <FaPhoneAlt />
+                  </span>
                   <span>{founder.phone}</span>
                 </div>
-                <div style={infoRow}>
-                  <FaEnvelope color="var(--teal)" />
+
+                <div className="team-contact-item">
+                  <span className="team-contact-icon">
+                    <FaEnvelope />
+                  </span>
                   <span>{founder.email}</span>
                 </div>
+
                 {founder.linkedin && founder.linkedin !== "#" && (
                   <a
                     href={founder.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    style={{ ...infoRow, textDecoration: "none", color: "inherit" }}
+                    className="team-contact-item team-contact-link"
                   >
-                    <FaLinkedin color="var(--teal)" />
+                    <span className="team-contact-icon">
+                      <FaLinkedin />
+                    </span>
                     <span>LinkedIn Profile</span>
                   </a>
                 )}
@@ -215,209 +192,166 @@ const Team = () => {
         </div>
       </section>
 
-      {/* TEAM GRID */}
-      <section className="section">
-        <div className="container">
-          <div className="section-head">
-            <span
-              className="eyebrow"
-              style={{ justifyContent: "center", display: "flex" }}
-            >
-              Core people
-            </span>
-            <h2>Meet Our Team Members</h2>
-            <p>
-              A passionate team working together to maintain quality, trust, and
-              excellence across every product we deliver.
-            </p>
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 24,
-            }}
-            id="team-grid"
+      <section className="team-members-section">
+        <div className="container team-container">
+          <motion.div
+            className="team-section-heading"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
+            <span className="team-eyebrow">
+              <span className="team-eyebrow-line" />
+              Core people
+              <span className="team-eyebrow-line" />
+            </span>
+
+            <h2>Meet Our Team Members</h2>
+
+            <p>
+              A passionate team working together to maintain quality, trust,
+              and excellence across every product we deliver.
+            </p>
+          </motion.div>
+
+          <div className="team-grid" id="team-grid">
             {teamMembers.map((member, i) => (
-              <motion.div
+              <motion.article
                 key={member.name}
-                initial={{ opacity: 0, y: 24 }}
+                className="team-member-card"
+                initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                style={{
-                  background: "var(--white)",
-                  borderRadius: "var(--radius-md)",
-                  overflow: "hidden",
-                  boxShadow: "var(--shadow-sm)",
-                  border: "1px solid rgba(11,79,86,0.08)",
-                  display: "flex",
-                  flexDirection: "column",
+                transition={{
+                  duration: 0.55,
+                  delay: i * 0.08,
+                }}
+                whileHover={{
+                  y: -10,
+                  transition: { duration: 0.25 },
                 }}
               >
-                <div style={{ aspectRatio: "1 / 1", overflow: "hidden" }}>
+                <div className="team-member-image-wrap">
                   <img
                     src={member.image}
                     alt={member.name}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
+                    className="team-member-image"
                   />
+
+                  <div className="team-member-image-overlay" />
+
+                  <div className="team-member-number">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+
+                  <div className="team-member-image-bottom">
+                    <span>{member.role}</span>
+                  </div>
                 </div>
 
-                <div style={{ padding: 22, display: "flex", flexDirection: "column", flex: 1 }}>
-                  <h3 style={{ fontSize: 20, marginBottom: 6 }}>{member.name}</h3>
-                  <p
-                    style={{
-                      color: "var(--peacock)",
-                      fontWeight: 700,
-                      fontSize: 14,
-                      marginBottom: 12,
-                    }}
-                  >
-                    {member.role}
-                  </p>
+                <div className="team-member-content">
+                  <div className="team-member-heading">
+                    <h3>{member.name}</h3>
+                    <p>{member.role}</p>
+                  </div>
 
-                  <p
-                    style={{
-                      color: "var(--ink-soft)",
-                      lineHeight: 1.7,
-                      fontSize: 14,
-                      marginBottom: 16,
-                    }}
-                  >
-                    {member.bio}
-                  </p>
+                  <div className="team-small-line" />
 
-                  <div style={{ marginTop: "auto", display: "grid", gap: 10 }}>
+                  <p className="team-member-bio">{member.bio}</p>
+
+                  <div className="team-member-contact">
                     {member.phone && (
-                      <div style={miniInfo}>
-                        <FaPhoneAlt color="var(--teal)" size={13} />
+                      <div className="team-mini-info">
+                        <span className="team-mini-icon">
+                          <FaPhoneAlt />
+                        </span>
                         <span>{member.phone}</span>
                       </div>
                     )}
+
                     {member.email && (
-                      <div style={miniInfo}>
-                        <FaEnvelope color="var(--teal)" size={13} />
+                      <div className="team-mini-info">
+                        <span className="team-mini-icon">
+                          <FaEnvelope />
+                        </span>
                         <span>{member.email}</span>
                       </div>
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* TEAM HIGHLIGHTS */}
-      <section className="section" style={{ background: "rgba(28,140,147,0.06)" }}>
-        <div className="container">
-          <div className="section-head">
-            <span
-              className="eyebrow"
-              style={{ justifyContent: "center", display: "flex" }}
-            >
-              What defines us
-            </span>
-            <h2>Why Our Team Stands Out</h2>
-          </div>
+      <section className="team-highlights-section">
+        <div className="team-highlight-glow" />
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 24,
-            }}
-            id="highlight-grid"
+        <div className="container team-container">
+          <motion.div
+            className="team-section-heading team-highlight-heading"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            {highlights.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                style={{
-                  background: "var(--white)",
-                  borderRadius: "var(--radius-md)",
-                  padding: 26,
-                  boxShadow: "var(--shadow-sm)",
-                  textAlign: "center",
-                }}
-              >
-                <div
-                  style={{
-                    width: 58,
-                    height: 58,
-                    borderRadius: "50%",
-                    background: "linear-gradient(135deg, var(--teal-light), var(--frost))",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    margin: "0 auto 16px",
+            <span className="team-eyebrow">
+              <span className="team-eyebrow-line" />
+              What defines us
+              <span className="team-eyebrow-line" />
+            </span>
+
+            <h2>Why Our Team Stands Out</h2>
+
+            <p>
+              Strong people, reliable processes, and a shared commitment to
+              quality.
+            </p>
+          </motion.div>
+
+          <div className="team-highlight-grid" id="highlight-grid">
+            {highlights.map((item, i) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.div
+                  key={item.title}
+                  className="team-highlight-card"
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.5,
+                    delay: i * 0.08,
+                  }}
+                  whileHover={{
+                    y: -8,
+                    transition: { duration: 0.25 },
                   }}
                 >
-                  <item.icon color="var(--teal-deep)" size={22} />
-                </div>
-                <h4 style={{ marginBottom: 10 }}>{item.title}</h4>
-                <p style={{ color: "var(--ink-soft)", fontSize: 14, lineHeight: 1.7 }}>
-                  {item.text}
-                </p>
-              </motion.div>
-            ))}
+                  <div className="team-highlight-icon">
+                    <Icon />
+                  </div>
+
+                  <div className="team-highlight-index">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+
+                  <h3>{item.title}</h3>
+
+                  <p>{item.text}</p>
+
+                  <div className="team-highlight-bottom-line" />
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 1100px) {
-          #team-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
-          #highlight-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          #founder-card {
-            grid-template-columns: 1fr !important;
-          }
-        }
-
-        @media (max-width: 560px) {
-          #team-grid {
-            grid-template-columns: 1fr !important;
-          }
-          #highlight-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </div>
   );
-};
-
-const infoRow = {
-  display: "flex",
-  alignItems: "center",
-  gap: 10,
-  fontSize: 14.5,
-  color: "var(--ink-soft)",
-};
-
-const miniInfo = {
-  display: "flex",
-  alignItems: "center",
-  gap: 8,
-  fontSize: 13.5,
-  color: "var(--ink-soft)",
 };
 
 export default Team;
