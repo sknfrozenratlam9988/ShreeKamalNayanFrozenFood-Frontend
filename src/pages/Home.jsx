@@ -27,10 +27,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-
-
-// Replace these with your own images
 import vegetableImg from "../assets/Mix-veg.webp";
 import fruitImg from "../assets/Mango.webp";
 import readyImg from "../assets/ready-to-eat.webp";
@@ -274,14 +270,14 @@ const Home = () => {
                 <div className="hero-buttons">
 
                   <Link
-                    className="btn-primary"
+                    className="btn-primary btn btn-primary"
                     to={slide.link}
                   >
                     {slide.button}
                   </Link>
 
                   <Link
-                    className="btn-outline"
+                    className="btn-outline btn btn-primary"
                     to="/about"
                   >
                     Our Story
@@ -760,7 +756,7 @@ const Home = () => {
 
         .showcase-card:hover .showcase-card-bg,
         .showcase-card:hover .showcase-card-cutout {
-          transform: scale(1.08);
+          transform: scale(1.05);
         }
 
         .showcase-card-overlay {
@@ -786,7 +782,7 @@ const Home = () => {
           flex-direction: column;
           justify-content: center;
           max-width: 68%;
-          color: #020202;
+          color: #f3f1f1;
         }
 
         .showcase-card-content h4 {
@@ -798,8 +794,8 @@ const Home = () => {
         }
 
         .showcase-features-label {
-          font-size: 18px;
-          font-weight: 700;
+          font-size: 20px;
+          font-weight: 900;
           opacity: 0.85;
           margin-bottom: 4px;
           display: block;
@@ -809,8 +805,8 @@ const Home = () => {
           margin: 0;
           padding: 0;
           list-style: none;
-          font-size: 15px;
-          font-weight: 500;
+          font-size: 16px;
+          font-weight: 700;
           line-height: 1.6;
           opacity: 0.92;
         }

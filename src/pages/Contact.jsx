@@ -163,7 +163,7 @@ const Contact = () => {
 
             <div className="contact-form-top">
               <div className="contact-form-dot"></div>
-              <span>CONTACT</span>
+              <span>CONTACT US</span>
             </div>
 
             <div className="contact-form-row" id="form-row">

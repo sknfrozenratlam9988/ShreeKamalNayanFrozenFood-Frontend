@@ -18,6 +18,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProductForm from "./pages/admin/ProductForm";
 import Team from "./pages/Team";
 import AdminOrders from "./components/AdminOrders";
+import FloatingSocialBar from "./components/FloatingSocialBar";
 // import Slider from "./pages/Slider";
 
 const ScrollToTop = () => {
@@ -46,6 +47,7 @@ function App() {
     <>
       <ScrollToTop />
       {!isAdminRoute && <Navbar />}
+      {!isAdminRoute && <FloatingSocialBar />}
       <Routes>
         {/* <Route path="/slider" element={<Slider />} /> */}
         <Route path="/" element={<Home />} />
@@ -57,6 +59,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/order-success" element={<OrderSuccess />} />
+        
 
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route

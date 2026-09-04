@@ -81,7 +81,7 @@ const AllProducts = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search products..."
-              style={{ border: "none", outline: "none", flex: 1, fontSize: 14, background: "transparent" }}
+              style={{ border: "none", outline: "none", flex: 1, fontSize: 14, background: "transparent", color: "var(--ink)" }}
             />
           </div>
         </div>

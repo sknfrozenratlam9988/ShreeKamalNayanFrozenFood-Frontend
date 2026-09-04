@@ -113,7 +113,7 @@ const ProductCard = ({ product, index = 0 }) => {
               position: "absolute",
               bottom: 12,
               right: 12,
-              background: "rgba(255,255,255,0.92)",
+              background: "rgba(19, 18, 18, 0.92)",
               color: "var(--teal-deep)",
               fontSize: 12.5,
               fontWeight: 800,

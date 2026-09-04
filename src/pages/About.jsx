@@ -199,7 +199,7 @@ const About = () => {
           >
             <span className="vision-mission-eyebrow">
               <span></span>
-              Our purpose
+              <h5>Our purpose</h5>
               <span></span>
             </span>
 

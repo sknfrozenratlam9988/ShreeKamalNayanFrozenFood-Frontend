@@ -12,53 +12,53 @@ const Footer = () => {
             Bringing farm-fresh vegetables and fruits to your kitchen, flash-frozen at peak
             ripeness — pure, natural, and ready whenever you are.
           </p>
-         <div style={{ display: "flex", gap: 12, marginTop: 20 }}>
-  {[
-    {
-      icon: FaFacebookF,
-      link: "https://www.facebook.com/your-page",
-    },
-    {
-      icon: FaInstagram,
-      link: "https://www.instagram.com/your_username",
-    },
-    {
-      icon: FaWhatsapp,
-      link: "https://wa.me/919329847964",
-      // or use:
-      // link: "https://api.whatsapp.com/send?phone=919329847964"
-    },
-  ].map((item, i) => (
-    <a
-      key={i}
-      href={item.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        width: 38,
-        height: 38,
-        borderRadius: "50%",
-        background: "rgba(255,255,255,0.1)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        transition: "background 0.25s ease, transform 0.25s ease",
-        color: "inherit",
-        textDecoration: "none",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.background = "var(--gold)";
-        e.currentTarget.style.transform = "translateY(-3px)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.background = "rgba(255,255,255,0.1)";
-        e.currentTarget.style.transform = "translateY(0)";
-      }}
-    >
-      <item.icon size={15} />
-    </a>
-  ))}
-</div>
+          <div style={{ display: "flex", gap: 12, marginTop: 20 }}>
+            {[
+              {
+                icon: FaFacebookF,
+                link: "https://www.facebook.com/your-page",
+              },
+              {
+                icon: FaInstagram,
+                link: "https://www.instagram.com/your_username",
+              },
+              {
+                icon: FaWhatsapp,
+                link: "https://wa.me/919329847964",
+                // or use:
+                // link: "https://api.whatsapp.com/send?phone=919329847964"
+              },
+            ].map((item, i) => (
+              <a
+                key={i}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  width: 38,
+                  height: 38,
+                  borderRadius: "50%",
+                  background: "rgba(255,255,255,0.1)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "background 0.25s ease, transform 0.25s ease",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "var(--gold)";
+                  e.currentTarget.style.transform = "translateY(-3px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
+              >
+                <item.icon size={15} />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div>
@@ -84,59 +84,59 @@ const Footer = () => {
         <div>
           <h4 style={{ color: "var(--gold-soft)", fontSize: 16, marginBottom: 18 }}>Get in Touch</h4>
           <ul
-  style={{
-    display: "flex",
-    flexDirection: "column",
-    gap: 14,
-    fontSize: 14.5,
-  }}
->
-  {/* Address */}
-  <li style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-    <FaMapMarkerAlt
-      style={{ marginTop: 3, color: "var(--gold-soft)" }}
-    />
-    <a
-      href="https://www.google.com/maps/search/?api=1&query=Survey+No.143/2/2+Village+Bhaisa+Dabar+Sailana+Ratlam+457001"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        color: "inherit",
-        textDecoration: "none",
-      }}
-    >
-      Survey No.143/2/2 Village Bhaisa Dabar, Sailana, Ratlam 457001
-    </a>
-  </li>
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 14,
+              fontSize: 14.5,
+            }}
+          >
+            {/* Address */}
+            <li style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+              <FaMapMarkerAlt
+                style={{ marginTop: 3, color: "var(--gold-soft)" }}
+              />
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Survey+No.143/2/2+Village+Bhaisa+Dabar+Sailana+Ratlam+457001"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                Survey No.143/2/2 Village Bhaisa Dabar, Sailana, Ratlam 457001
+              </a>
+            </li>
 
-  {/* Phone */}
-  <li style={{ display: "flex", gap: 10, alignItems: "center" }}>
-    <FaPhoneAlt style={{ color: "var(--gold-soft)" }} />
-    <a
-      href="tel:+919329847964"
-      style={{
-        color: "inherit",
-        textDecoration: "none",
-      }}
-    >
-      +91 9329847964
-    </a>
-  </li>
+            {/* Phone */}
+            <li style={{ display: "flex", gap: 10, alignItems: "center" }}>
+              <FaPhoneAlt style={{ color: "var(--gold-soft)" }} />
+              <a
+                href="tel:+919329847964"
+                style={{
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                +91 9329847964
+              </a>
+            </li>
 
-  {/* Email */}
-  <li style={{ display: "flex", gap: 10, alignItems: "center" }}>
-    <FaEnvelope style={{ color: "var(--gold-soft)" }} />
-    <a
-      href="mailto:shreekamalnayanfrozen@gmail.com"
-      style={{
-        color: "inherit",
-        textDecoration: "none",
-      }}
-    >
-      shreekamalnayanfrozen@gmail.com
-    </a>
-  </li>
-</ul>
+            {/* Email */}
+            <li style={{ display: "flex", gap: 10, alignItems: "center" }}>
+              <FaEnvelope style={{ color: "var(--gold-soft)" }} />
+              <a
+                href="mailto:sales@shreekamalnayanfrozenfood.com"
+                style={{
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                sales@shreekamalnayanfrozenfood.com
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
 

@@ -20,7 +20,7 @@ const founder = {
   role: "Co-Founder & Partner",
   image: clientImg,
   phone: "+91 9617420222",
-  email: "shreekamalnayanfrozen@gmail.com",
+  email: "hemant@shreekamalnayanfrozenfood.com",
   linkedin: "#",
   bio: `As a Partner at Shree Kamalnayan Frozen Food LLP, Hemant Patidar leads the company’s mission to deliver top-tier frozen food products. With 5 years of hands-on expertise in the frozen food sector, he combines strong market insights with operational excellence. Under his leadership, the company continues to expand its footprint while building reliable, long-term corporate relationships.`,
 };
@@ -30,16 +30,16 @@ const teamMembers = [
     name: "Gulshan Patidar",
     role: "Associate Director",
     image: member3Img,
-    phone: "+91 9876543212",
-    email: "member3@example.com",
+    phone: "+91 73893 71985",
+    email: "gulshan@shreekamalnayanfrozenfood.com",
     bio: "As Associate Director, Gulshan Patidar steers the market growth and strategic partnerships at Shree Kamalnayan Frozen Food LLP. With 8 years of dedicated expertise in the frozen food sector, he possesses a powerful market network that bridges the gap between production and widespread distribution. Gulshan’s sharp business acumen, combined with his ability to cultivate long-term corporate alliances, makes him a key driver in maximizing the company’s market share and operational success.",
   },
   {
     name: "Madan Patidar",
     role: "Chief Executive Officer (CEO)",
     image: member4Img,
-    phone: "+91 9876543213",
-    email: "member4@example.com",
+    phone: "+91 877 053 4545",
+    email: "madan@shreekamalnayanfrozenfood.com",
     bio: "As the CEO of Shree Kamalnayan Frozen Food LLP, Madan Patidar commands the overarching corporate vision, global strategy, and financial growth of the enterprise. He combines sharp commercial foresight with a passion for sustainable manufacturing practices and premium supply chain solutions. Under his executive leadership, the company consistently hits major milestones, strengthens high-level stakeholder relations, and maintains its solid reputation for excellence and reliability in the marketplace.",
   },
   {
@@ -47,7 +47,7 @@ const teamMembers = [
     role: "Partner",
     image: member1Img,
     phone: "+91 9876543210",
-    email: "member1@example.com",
+    email: "sales@shreekamalnayanfrozenfood.com",
     bio: "As a Partner at Shree Kamalnayan Frozen Food LLP, Deepika Patidar anchors the company’s commitment to premium quality and client satisfaction. She brings fresh perspectives to business development, streamlining internal processes and strengthening stakeholder relationships. Her collaborative leadership style and detail-oriented approach are key drivers in expanding the brand’s market presence and operational efficiency.",
   },
   {
@@ -55,7 +55,7 @@ const teamMembers = [
     role: "Partner",
     image: member2Img,
     phone: "+91 9876543211",
-    email: "member2@example.com",
+    email: "support@shreekamalnayanfrozenfood.com",
     bio: "As a Partner at Shree Kamalnayan Frozen Food LLP, Ritu Patidar infuses forward-thinking strategies into the company's long-term growth plans. She closely monitors modern business development initiatives and internal efficiencies to keep the company agile and competitive. Her collaborative spirit and focus on sustainable business practices play a vital role in taking the brand to new heights in the frozen food industry.",
   },
 ];
@@ -170,7 +170,9 @@ const Team = () => {
                   <span className="team-contact-icon">
                     <FaEnvelope />
                   </span>
+                  <a href={`mailto:${founder.email}`} className="team-contact-link">
                   <span>{founder.email}</span>
+                  </a>
                 </div>
 
                 {founder.linkedin && founder.linkedin !== "#" && (
@@ -275,7 +277,9 @@ const Team = () => {
                         <span className="team-mini-icon">
                           <FaEnvelope />
                         </span>
-                        <span>{member.email}</span>
+                        <a href={`mailto:${member.email}`} className="team-contact-link">
+                          <span>{member.email}</span>
+                        </a>
                       </div>
                     )}
                   </div>
