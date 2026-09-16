@@ -232,7 +232,7 @@ const Home = () => {
         <section className="hero-slider">
 
       <Swiper
-        modules={[Autoplay, Pagination, Navigation, EffectFade]}
+        modules={[Autoplay, Pagination, EffectFade]}
         // effect="slide"
         loop={true}
         speed={900}
@@ -241,7 +241,6 @@ const Home = () => {
           disableOnInteraction: false,
         }}
         pagination={{ clickable: true }}
-        navigation
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>

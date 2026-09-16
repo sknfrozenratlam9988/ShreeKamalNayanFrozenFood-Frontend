@@ -12,7 +12,7 @@ import {
 import clientImg from "../assets/ceo.png";
 import member1Img from "../assets/ceo.png";
 import member2Img from "../assets/ceo.png";
-import member3Img from "../assets/ceo.png";
+import member3Img from "../assets/Gulsan_img.png";
 import member4Img from "../assets/ceo.png";
 
 const founder = {
@@ -243,9 +243,9 @@ const Team = () => {
 
                   <div className="team-member-image-overlay" />
 
-                  <div className="team-member-number">
+                  {/* <div className="team-member-number">
                     {String(i + 1).padStart(2, "0")}
-                  </div>
+                  </div> */}
 
                   <div className="team-member-image-bottom">
                     <span>{member.role}</span>

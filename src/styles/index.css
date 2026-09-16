@@ -5503,3 +5503,151 @@ section.section:has(#vision-mission-grid) .section-head p {
     font-size: 12px !important;
   }
 }
+
+
+
+
+/* Main floating social bar */
+.floating-social-bar {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Arrow button */
+.floating-arrow {
+  width: 54px;
+  height: 42px;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  background: #000;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+
+  border-radius: 10px 0 0 0;
+
+  transition: all 0.3s ease;
+}
+
+.floating-arrow:hover {
+  background: #111;
+}
+
+/* Social items wrapper */
+.floating-social-items {
+  display: flex;
+  flex-direction: column;
+
+  width: 54px;
+
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+}
+
+/* Individual social item */
+.floating-social-item {
+  position: relative;
+
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+/* Icons */
+.floating-icon {
+  font-size: 20px;
+}
+
+/* Text that appears when hovering */
+.floating-expanded-text {
+  position: absolute;
+  right: 54px;
+
+  height: 54px;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+
+  white-space: nowrap;
+
+  background: inherit;
+  color: #fff;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateX(10px);
+
+  transition: all 0.3s ease;
+}
+
+/* Show text on hover */
+.floating-social-item:hover .floating-expanded-text {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/* Colors */
+.contact-item {
+  background: #7356d8;
+}
+
+.whatsapp-item {
+  background: #16c967;
+}
+
+.facebook-item {
+  background: #2586c7;
+}
+
+.instagram-item {
+  background: #c51aaa;
+}
+
+.linkedin-item {
+  background: #087ca8;
+}
+
+.youtube-item {
+  background: #ff3b3b;
+}
+
+/* Hover effect */
+.floating-social-item:hover {
+  width: 64px;
+}
+
+/* =========================
+   COLLAPSED STATE
+   ========================= */
+
+.social-bar-collapsed .floating-social-items {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+}
