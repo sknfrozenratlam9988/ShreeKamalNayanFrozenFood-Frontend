@@ -40,6 +40,7 @@ import vegetableImg3 from "../assets/Frozen_Mangoes.webp";
 import fruitImg3 from "../assets/Black_Berry.webp";
 import readyImg3 from "../assets/Custard_Apple.webp";
 import readyImg4 from "../assets/Strawberry.webp";
+import Counter from "./Counter";
 const fadeUp = {
 
   
@@ -663,41 +664,44 @@ const Home = () => {
 
       {/* ================= WHY US ================= */}
       <section className="section-tight" style={{ background: "var(--teal-deep)", color: "var(--frost)" }}>
-        <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }} id="why-grid">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <span className="eyebrow" style={{ color: "var(--gold-soft)" }}>Why choose us</span>
-            <h2 style={{ color: "var(--white)", marginTop: 14, fontSize: "clamp(26px, 3.5vw, 36px)" }}>
-              Quality you can taste, trust you can rely on
-            </h2>
-            <p style={{ marginTop: 16, opacity: 0.85, lineHeight: 1.75 }}>
-              Every vegetable is sourced from trusted local farms and processed in our
-              FSSAI-certified facility. We follow strict cold-chain protocols from
-              harvest to your doorstep, ensuring nutrition, texture, and taste are never
-              compromised.
-            </p>
-          </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-            {[
-              { t: "Hygienically Processed", d: "Cleaned & blanched in a certified facility" },
-              { t: "Zero Preservatives", d: "Nothing artificial, ever added" },
-              { t: "Consistent Cold Chain", d: "Maintained at -18°C throughout" },
-              { t: "Nationwide Delivery", d: "Reaching kitchens across India" },
-            ].map((f, i) => (
-              <motion.div
-                key={f.t}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                style={{ background: "rgba(255,255,255,0.06)", borderRadius: "var(--radius-md)", padding: 22 }}
-              >
-                <h4 style={{ color: "var(--gold-soft)", fontSize: 16 }}>{f.t}</h4>
-                <p style={{ fontSize: 13, opacity: 0.8, marginTop: 8, lineHeight: 1.5 }}>{f.d}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+  <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }} id="why-grid">
+    <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+      <span className="eyebrow" style={{ color: "var(--gold-soft)" }}>Why choose us</span>
+      <h2 style={{ color: "var(--white)", marginTop: 14, fontSize: "clamp(26px, 3.5vw, 36px)" }}>
+        Quality you can taste, trust you can rely on
+      </h2>
+      <p style={{ marginTop: 16, opacity: 0.85, lineHeight: 1.75 }}>
+        Every vegetable is sourced from trusted local farms and processed in our
+        FSSAI-certified facility. We follow strict cold-chain protocols from
+        harvest to your doorstep, ensuring nutrition, texture, and taste are never
+        compromised.
+      </p>
+    </motion.div>
+
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+      {[
+        { value: 500, suffix: "+", label: "Happy Clients" },
+        { value: 1600, suffix: "+", label: "Cultivation Area" },
+        { value: 50, suffix: "+", label: "Number of Crops" },
+        { value: null, label: "Support", staticText: "24/7" },
+      ].map((f, i) => (
+        <motion.div
+          key={f.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: i * 0.1 }}
+          style={{ background: "rgba(255,255,255,0.06)", borderRadius: "var(--radius-md)", padding: 22 }}
+        >
+          <h4 style={{ color: "var(--gold-soft)", fontSize: 28, fontWeight: 700, margin: 0 }}>
+            {f.staticText ? f.staticText : <Counter value={f.value} suffix={f.suffix} />}
+          </h4>
+          <p style={{ fontSize: 13, opacity: 0.8, marginTop: 8, lineHeight: 1.5 }}>{f.label}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       <style>{`
         .cat-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }

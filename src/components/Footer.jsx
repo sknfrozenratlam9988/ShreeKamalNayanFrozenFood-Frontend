@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaFilePdf } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
 const Footer = () => {
@@ -7,7 +7,7 @@ const Footer = () => {
     <footer style={{ background: "var(--teal-deep)", color: "var(--frost)", paddingTop: 64 }}>
       <div className="container" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1.2fr", gap: 40 }} id="footer-grid">
         <div>
-          <img src={logo} alt="Shree Kamal Nayan Frozen Food LLP" style={{ height: 64, marginBottom: 16, filter: "brightness(1.15)" }} />
+          <img src={logo} alt="Shree Kamal Nayan Frozen Food LLP" style={{ height: 100, marginBottom: 16, filter: "brightness(1.15)" }} />
           <p style={{ opacity: 0.85, lineHeight: 1.7, maxWidth: 320, fontSize: 14.5 }}>
             Bringing farm-fresh vegetables and fruits to your kitchen, flash-frozen at peak
             ripeness — pure, natural, and ready whenever you are.
@@ -134,6 +134,20 @@ const Footer = () => {
                 }}
               >
                 sales@shreekamalnayanfrozenfood.com
+              </a>
+            </li>
+
+            <li style={{ display: "flex", gap: 10, alignItems: "center" }}>
+              <FaFilePdf style={{ color: "var(--gold-soft)" }} />
+              <a
+                href="/public/files/FInal_brochure.pdf"
+                download="Product-Catalog.pdf"
+                style={{
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                Download our <strong>Product Catalog</strong>
               </a>
             </li>
           </ul>

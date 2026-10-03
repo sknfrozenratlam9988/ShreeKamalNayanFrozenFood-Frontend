@@ -13,7 +13,7 @@ import clientImg from "../assets/ceo.png";
 import member1Img from "../assets/ceo.png";
 import member2Img from "../assets/ceo.png";
 import member3Img from "../assets/Gulsan_img.png";
-import member4Img from "../assets/ceo.png";
+import member4Img from "../assets/madan.png";
 
 const founder = {
   name: "Hemant Patidar",
