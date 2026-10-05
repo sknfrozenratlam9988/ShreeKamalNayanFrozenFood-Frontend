@@ -140,7 +140,7 @@ const Footer = () => {
             <li style={{ display: "flex", gap: 10, alignItems: "center" }}>
               <FaFilePdf style={{ color: "var(--gold-soft)" }} />
               <a
-                href="/public/files/FInal_brochure.pdf"
+                href="/files/FInal_brochure.pdf"
                 download="Product-Catalog.pdf"
                 style={{
                   color: "inherit",
