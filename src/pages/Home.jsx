@@ -51,7 +51,7 @@ const fadeUp = {
 const categories = [
   { name: "Frozen Vegetables", tagline: "Corn, spinach, beans & more", emoji: "🥦" },
   { name: "Frozen Fruits", tagline: "Mango, strawberry & more", emoji: "🥭" },
-  { name: "Ready-to-Eat", tagline: "Ready-to-cook vegetable blends", emoji: "🥗" },
+  { name: "Ready To Eat", tagline: "Ready-to-cook vegetable blends", emoji: "🥗" },
 ];
 
 const stats = [
