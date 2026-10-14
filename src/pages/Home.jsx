@@ -175,24 +175,24 @@ const showcaseProducts = [
 
   const clientReviews = [
   {
-    name: "Rohit Sharma",
-    role: "Home Chef",
+    name: "Devraju Devu",
+    role: "Regular Customer",
     initials: "RS",
     rating: 5,
     review:
       "The frozen vegetables are really fresh and convenient. The taste stays close to freshly picked produce.",
   },
   {
-    name: "Priya Patel",
+    name: "Shafiqa Khan",
     role: "Regular Customer",
     initials: "PP",
     rating: 5,
     review:
-      "I loved the strawberries and custard apples. Great quality, clean packaging and very easy to use.",
+      "I loved the Products. Great quality, clean packaging and very easy to use.",
   },
   {
     name: "Amit Verma",
-    role: "Restaurant Owner",
+    role: "Regular Customer",
     initials: "AV",
     rating: 5,
     review:
@@ -200,7 +200,7 @@ const showcaseProducts = [
   },
   {
     name: "Neha Jain",
-    role: "Home Cook",
+    role: "Regular Customer",
     initials: "NJ",
     rating: 5,
     review:
@@ -208,7 +208,7 @@ const showcaseProducts = [
   },
   {
     name: "Vikas Gupta",
-    role: "Food Enthusiast",
+    role: "Regular Customer",
     initials: "VG",
     rating: 5,
     review:
@@ -845,7 +845,7 @@ const Home = () => {
 
 .reviews-slider-wrap {
   position: relative;
-  padding: 18px 42px 58px;
+  padding: 18px 0px 0px;
   perspective: 1200px;
 }
 
